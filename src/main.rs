@@ -1,5 +1,5 @@
 use anyhow::Result;
-use mini_agent::{LLM_MODEL, chat_complete};
+use mini_agent::{LLM_MODEL, chat_complete_structured};
 use tracing::Level;
 use tracing_subscriber::FmtSubscriber;
 
@@ -12,10 +12,15 @@ async fn main() -> Result<()> {
         .finish();
     tracing::subscriber::set_global_default(subscriber)?;
 
-    let content =
-        chat_complete(LLM_MODEL, Some("你是一个全能的助手"), "中国的首都在哪里？").await?;
+    // let content =
+    //     chat_complete(LLM_MODEL, Some("你是一个全能的助手"), "中国的首都在哪里？").await?;
+    // println!("Response: {}", content);
 
-    println!("Response: {}", content);
+    let plan =
+        chat_complete_structured(LLM_MODEL, Some("你是一个全能的助手"), "中国的首都在哪里？")
+            .await?;
+
+    println!("Response: {:#?}", plan);
 
     Ok(())
 }

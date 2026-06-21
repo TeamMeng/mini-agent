@@ -1,1 +1,1 @@
-pub const LLM_MODEL: &str = "deepseek-v4-pro";
+pub const LLM_MODEL: &str = "openai/gpt-oss-120b:free";
