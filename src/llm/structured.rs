@@ -1,4 +1,4 @@
-use crate::models::ActionPlan;
+use crate::ActionPlan;
 use anyhow::Result;
 use async_openai::types::chat::{
     ChatCompletionRequestSystemMessageArgs, CreateChatCompletionRequestArgs, ResponseFormat,
